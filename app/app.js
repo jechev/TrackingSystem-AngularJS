@@ -5,7 +5,9 @@ angular.module('trackingSystem', [
   'ngRoute',
   'validation.match',
   'trackingSystem.home',
-   'trackingSystem.users.authentication'
+  'trackingSystem.app-services.authentication',
+  'trackingSystem.login',
+  'trackingSystem.register'
 ])
     .config(['$routeProvider', function($routeProvider) {
       $routeProvider.otherwise({redirectTo: '/'});

@@ -1,4 +1,4 @@
-angular.module('trackingSystem.users.authentication', [])
+angular.module('trackingSystem.app-services.authentication', [])
     .factory('authentication', [
         '$http',
         '$q',
@@ -10,8 +10,7 @@ angular.module('trackingSystem.users.authentication', [])
 
                 $http.post(BASE_URL + 'Account/Register', user)
                     .then(function(response) {
-                        sessionStorage['currentUserName']=JSON.stringify(response.userName);
-                        sessionStorage['currentUserToken']=JSON.stringify(response.access_token);
+                        loginUser(user);
                         deferred.resolve(response);
                     }, function(error) {
 
@@ -27,13 +26,13 @@ angular.module('trackingSystem.users.authentication', [])
 
                 $http.post(BASE_URL + 'Token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
                     .then(function (response) {
-                        sessionStorage['currentUserName']=JSON.stringify(response.userName);
-                        sessionStorage['currentUserToken']=JSON.stringify(response.access_token);
+                        sessionStorage['currentUserName']=JSON.stringify(response.data.userName);
+                        sessionStorage['currentUserToken']=JSON.stringify(response.data.access_token);
                     deferred.resolve(response);
 
-                }).error(function (err, status) {
-                    deferred.reject(err);
-                });
+                    },function (err) {
+
+                    });
 
                 return deferred.promise;
             }

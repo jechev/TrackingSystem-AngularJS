@@ -1,0 +1,16 @@
+<div class="col-md-6 col-md-offset-3">
+    <form name="registerUserForm">
+        <h3>Register</h3>
+        <label for="reg-email">E-mail</label>
+        <input type="email" required="required" ng-model="registerUser.email" id="reg-email" class="form-control" />
+        <br />
+        <label for="reg-password">Password</label>
+        <input type="password" required="required" min-length="6" max-length="100" ng-model="registerUser.password" id="reg-password" class="form-control" />
+        <br />
+        <label for="reg-confirm-password">Confirm Password</label>
+        <input type="password" required="required" min-length="6" max-length="100"  ng-model="registerUser.confirmPassword" id="reg-confirm-password" match="registerUser.password" class="form-control" name="confirmPassword"/>
+        <br />
+        <div data-ng-show="registerUserForm.confirmPassword.$error.match" id="password-not-match-text">Passwords do not match!</div>
+        <button class="btn btn-primary" ng-disabled="registerUserForm.$invalid || registerUser.password != registerUser.confirmPassword" match="registerUser.confirmPassword" ng-click="register(registerUser)">Register</button>
+    </form>
+</div>

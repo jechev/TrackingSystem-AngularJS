@@ -1,35 +1,3 @@
 <div class="margin-bottom-100"></div>
-<div class="text-center" id="home-header-container">
-    <h1 >Tracking System</h1>
-</div>
-<div class="row">
-    <div class="col-md-4 col-md-offset-1 border">
-        <h3>Login</h3>
-        <form name="loginUserForm">
-            <label for="email">E-mail</label>
-            <input type="email" id="email" required="required" ng-model="loginUser.email" class="form-control" />
-            <br />
-            <label for="password">Password</label>
-            <input type="password" required="required" ng-model="loginUser.password" id="password" class="form-control" />
-            <br />
-            <button class="btn btn-primary" ng-disabled="loginUserForm.$invalid" ng-click="login(loginUser)">Login</button>
-        </form>
-    </div>
-
-    <div class="col-md-4 col-md-offset-2 border">
-        <form name="registerUserForm">
-            <h3>Register</h3>
-            <label for="reg-email">E-mail</label>
-            <input type="email" required="required" ng-model="registerUser.email" id="reg-email" class="form-control" />
-            <br />
-            <label for="reg-password">Password</label>
-            <input type="password" required="required" min-length="6" max-length="100" ng-model="registerUser.password" id="reg-password" class="form-control" />
-            <br />
-            <label for="reg-confirm-password">Confirm Password</label>
-            <input type="password" required="required" min-length="6" max-length="100"  ng-model="registerUser.confirmPassword" id="reg-confirm-password" match="registerUser.password" class="form-control" name="confirmPassword"/>
-            <br />
-            <div data-ng-show="registerUserForm.confirmPassword.$error.match" id="password-not-match-text">Passwords do not match!</div>
-            <button class="btn btn-primary" ng-disabled="registerUserForm.$invalid || registerUser.password != registerUser.confirmPassword" match="registerUser.confirmPassword" ng-click="register(registerUser)">Register</button>
-        </form>
-    </div>
+<div class="text-center">Welcome</div>
 </div>
