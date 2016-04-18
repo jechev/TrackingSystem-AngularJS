@@ -6,6 +6,7 @@ angular.module('trackingSystem', [
   'validation.match',
   'trackingSystem.home',
   'trackingSystem.app-services.authentication',
+  'trackingSystem.app-services.notifyService',
   'trackingSystem.login',
   'trackingSystem.register'
 ])

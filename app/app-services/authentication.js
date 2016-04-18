@@ -25,25 +25,35 @@ angular.module('trackingSystem.app-services.authentication', [])
                 var deferred = $q.defer();
 
                 $http.post(BASE_URL + 'Token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
-                    .then(function (response) {
-                        sessionStorage['currentUserName']=JSON.stringify(response.data.userName);
-                        sessionStorage['currentUserToken']=JSON.stringify(response.data.access_token);
+                    .success(function (response) {
+                        sessionStorage['currentUserName']=response.userName;
+                        sessionStorage['currentUserToken']=response.access_token;
                     deferred.resolve(response);
-
-                    },function (err) {
-
+                    }).error(function (err) {
+                        deferred.reject(err);
                     });
 
                 return deferred.promise;
             }
 
             function logout() {
+                delete sessionStorage['currentUserName'];
+                delete sessionStorage['currentUserToken'];
+            }
 
+            function isAnonymous(){
+                return sessionStorage['currentUserName']==undefined;
+            }
+
+            function isLoggedIn(){
+                return sessionStorage['currentUserName']!=undefined;
             }
 
             return {
                 registerUser: registerUser,
                 loginUser: loginUser,
-                logout: logout
+                logout: logout,
+                isAnonymous:isAnonymous,
+                isLoggedIn:isLoggedIn
             }
         }]);

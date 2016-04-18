@@ -1,0 +1,24 @@
+<div class="navbar-header">
+    <a href="#/" class="navbar-brand">Tracking System</a>
+    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+</div>
+<div class="navbar-collapse collapse" id="navbar-main">
+    <ul class="nav navbar-nav">
+        <li>
+            <a href="#/">Home</a>
+        </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right" ng-if="authentication.isAnonymous()">
+        <li><a href="#/login">Login</a></li>
+        <li><a href="#/register">Register</a></li>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right" ng-if="authentication.isLoggedIn()">
+        <li><a href="#/login">Change Password</a></li>
+        <li><a href="#/register">Logout</a></li>
+    </ul>
+</div>

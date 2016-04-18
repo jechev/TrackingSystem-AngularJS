@@ -13,31 +13,13 @@
     <script src="app/bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
-    <div class="navbar navbar-default navbar-fixed-top">
-        <div class="navbar-header">
-            <a href="/" class="navbar-brand">Tracking System</a>
-            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-        <div class="navbar-collapse collapse" id="navbar-main">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="#/">Home</a>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#/login">Login</a></li>
-                <li><a href="#/register">Register</a></li>
-            </ul>
-        </div>
-    </div>
+    <div ng-include src="'app/templates/header.html'" class="navbar navbar-default navbar-fixed-top"></div>
     <div class="container">
         <div ng-view></div>
     </div>
     <script src="app/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="app/bower_components/noty/js/noty/packaged/jquery.noty.packaged.min.js"
+    <script src="app/bower_components/noty/js/noty/jquery.noty.js"></script>
     <script src="app/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="app/bower_components/angular/angular.js"></script>
     <script src="app/bower_components/angular-route/angular-route.js"></script>
@@ -49,5 +31,6 @@
     <script src="app/login/login-controller.js"></script>
     <script src="app/register/register-controller.js"></script>
     <script src="app/app-services/authentication.js"></script>
+    <script src="app/app-services/notifyService.js"></script>
 </body>
 </html>

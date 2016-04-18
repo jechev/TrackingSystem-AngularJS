@@ -8,12 +8,17 @@ angular.module('trackingSystem.login',[])
     .controller('LoginController',['$scope',
         '$location',
         'authentication',
-        function($scope, $location, authentication) {
+        'notifyService',
+        function($scope, $location, authentication,notifyService) {
             $scope.login = function (user) {
-                user.grant_type='password';
-                authentication.loginUser(user)
-                    .then(function(loggedInUser){
-                        console.log(loggedInUser);
-                    });
+                authentication.loginUser(user).then(
+                function(success){
+                    notifyService.notifySuccessMsg("Login successful");
+                    console.log(sessionStorage['currentUserName']!=undefined);
+                    $location.path("/");
+                },
+                function error(err){
+                    notifyService.notifyErrorMsg("Login failed", err);
+                });
             };
         }]);
