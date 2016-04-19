@@ -8,7 +8,8 @@ angular.module('trackingSystem', [
   'trackingSystem.app-services.authentication',
   'trackingSystem.app-services.notifyService',
   'trackingSystem.login',
-  'trackingSystem.register'
+  'trackingSystem.register',
+  'trackingSystem.profile'
 ])
     .config(['$routeProvider', function($routeProvider) {
       $routeProvider.otherwise({redirectTo: '/'});

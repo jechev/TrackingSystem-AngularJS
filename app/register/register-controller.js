@@ -8,11 +8,16 @@ angular.module('trackingSystem.register',[])
     .controller('RegisterController',['$scope',
         '$location',
         'authentication',
-        function($scope, $location, authentication) {
+        'notifyService',
+        function($scope, $location, authentication,notifyService) {
             $scope.register = function (user) {
                 authentication.registerUser(user)
-                    .then(function(registeredUser) {
-                        console.log(registeredUser);
-                    });
+                    .then(function(success){
+                            notifyService.notifySuccessMsg("Register successful");
+                            $location.path("/");
+                        },
+                        function error(err){
+                            notifyService.notifyErrorMsg("Register failed", err);
+                        });
             };
         }]);

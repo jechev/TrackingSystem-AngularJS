@@ -14,7 +14,6 @@ angular.module('trackingSystem.login',[])
                 authentication.loginUser(user).then(
                 function(success){
                     notifyService.notifySuccessMsg("Login successful");
-                    console.log(sessionStorage['currentUserName']!=undefined);
                     $location.path("/");
                 },
                 function error(err){

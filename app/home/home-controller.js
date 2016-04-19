@@ -8,6 +8,20 @@ angular.module('trackingSystem.home',[])
     .controller('HomeController',['$scope',
         '$location',
         'authentication',
-        function($scope, $location, authentication) {
-
+        'notifyService',
+        function($scope, $location, authentication,notifyService) {
+            $scope.auth=authentication;
+            $scope.username=sessionStorage['currentUserName'];
+            $scope.logout=function(){
+                authentication.logout().then(
+                    function(success){
+                        notifyService.notifySuccessMsg("Logout successful");
+                        console.log('wtf');
+                        $location.path("/");
+                    },
+                    function(err){
+                        notifyService.notifyErrorMsg("Logout failed", err);
+                    }
+                )
+            }
     }]);

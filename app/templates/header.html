@@ -12,13 +12,13 @@
             <a href="#/">Home</a>
         </li>
     </ul>
-    <ul class="nav navbar-nav navbar-right" ng-if="authentication.isAnonymous()">
+    <ul class="nav navbar-nav navbar-right" ng-if="auth.isAnonymous()">
         <li><a href="#/login">Login</a></li>
         <li><a href="#/register">Register</a></li>
     </ul>
 
-    <ul class="nav navbar-nav navbar-right" ng-if="authentication.isLoggedIn()">
-        <li><a href="#/login">Change Password</a></li>
-        <li><a href="#/register">Logout</a></li>
+    <ul class="nav navbar-nav navbar-right" ng-if="auth.isLoggedIn()">
+        <li><a href="#/profile/password">Change Password</a></li>
+        <li><a href="#/" ng-click="logout()">Logout</a></li>
     </ul>
 </div>

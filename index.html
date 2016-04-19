@@ -13,7 +13,7 @@
     <script src="app/bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
-    <div ng-include src="'app/templates/header.html'" class="navbar navbar-default navbar-fixed-top"></div>
+    <div ng-include src="'app/templates/header.html'" class="navbar navbar-default navbar-fixed-top" ng-controller="HomeController"></div>
     <div class="container">
         <div ng-view></div>
     </div>
@@ -30,6 +30,7 @@
     <script src="app/home/home-controller.js"></script>
     <script src="app/login/login-controller.js"></script>
     <script src="app/register/register-controller.js"></script>
+    <script src="app/profile/profile-controller.js"></script>
     <script src="app/app-services/authentication.js"></script>
     <script src="app/app-services/notifyService.js"></script>
 </body>
