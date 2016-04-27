@@ -16,7 +16,6 @@ angular.module('trackingSystem.home',[])
                 authentication.logout().then(
                     function(success){
                         notifyService.notifySuccessMsg("Logout successful");
-                        console.log('wtf');
                         $location.path("/");
                     },
                     function(err){

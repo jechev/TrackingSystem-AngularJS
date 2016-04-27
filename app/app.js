@@ -7,11 +7,14 @@ angular.module('trackingSystem', [
   'trackingSystem.home',
   'trackingSystem.app-services.authentication',
   'trackingSystem.app-services.notifyService',
+  'trackingSystem.app-services.issueService',
   'trackingSystem.login',
   'trackingSystem.register',
-  'trackingSystem.profile'
+  'trackingSystem.profile',
+  'trackingSystem.dashboard'
 ])
     .config(['$routeProvider', function($routeProvider) {
       $routeProvider.otherwise({redirectTo: '/'});
     }])
-    .constant('BASE_URL',' http://softuni-issue-tracker.azurewebsites.net/api/');
+    .constant('BASE_URL',' http://softuni-issue-tracker.azurewebsites.net/')
+    .constant('PAGE_SIZE',5);

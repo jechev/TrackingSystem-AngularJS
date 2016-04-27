@@ -15,10 +15,11 @@
 <body>
     <div ng-include src="'app/templates/header.html'" class="navbar navbar-default navbar-fixed-top" ng-controller="HomeController"></div>
     <div class="container">
+        <div ng-controller="HomeController" ng-if="auth.isAnonymous()">Hello</div>
         <div ng-view></div>
     </div>
+
     <script src="app/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="app/bower_components/noty/js/noty/packaged/jquery.noty.packaged.min.js"
     <script src="app/bower_components/noty/js/noty/jquery.noty.js"></script>
     <script src="app/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="app/bower_components/angular/angular.js"></script>
@@ -31,7 +32,9 @@
     <script src="app/login/login-controller.js"></script>
     <script src="app/register/register-controller.js"></script>
     <script src="app/profile/profile-controller.js"></script>
+    <script src="app/dashboard/dashboard-controller.js"></script>
     <script src="app/app-services/authentication.js"></script>
     <script src="app/app-services/notifyService.js"></script>
+    <script src="app/app-services/issueService.js"></script>
 </body>
 </html>
