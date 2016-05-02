@@ -1,4 +1,6 @@
 <div>
 <div class="margin-bottom-100"></div>
-<div class="text-center">Welcome</div>
+<div class="text-center" ng-if="auth.isAnonymous()" >Welcome</div>
+<div class="text-center" ng-if="auth.isLoggedIn()" ng-include src="'app/dashboard/dashboard.html'"></div>
+
 </div>

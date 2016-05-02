@@ -3,6 +3,7 @@
 // Declare app level module which depends on views, and components
 angular.module('trackingSystem', [
   'ngRoute',
+  'ui.bootstrap.pagination',
   'validation.match',
   'trackingSystem.home',
   'trackingSystem.app-services.authentication',
@@ -11,7 +12,9 @@ angular.module('trackingSystem', [
   'trackingSystem.login',
   'trackingSystem.register',
   'trackingSystem.profile',
-  'trackingSystem.dashboard'
+  'trackingSystem.dashboard',
+  'trackingSystem.issue-details',
+  'trackingSystem.app-directives.issues-statues'
 ])
     .config(['$routeProvider', function($routeProvider) {
       $routeProvider.otherwise({redirectTo: '/'});

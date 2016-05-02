@@ -18,7 +18,20 @@ angular.module('trackingSystem.app-services.issueService',[])
                 return deferred.promise;
             }
 
+            function getIssueById(id){
+                var deferred=$q.defer();
+                $http.get(BASE_URL + 'issues/'+id,{headers:authentication.getAuthHeaders()})
+                    .success(function(issueData){
+                        deferred.resolve(issueData);
+                    })
+                    .error(function(err){
+                        deferred.reject(err);
+                    });
+                return deferred.promise;
+            }
+
             return {
-                getUserIssues:getUserIssues
+                getUserIssues:getUserIssues,
+                getIssueById:getIssueById
             }
         }]);

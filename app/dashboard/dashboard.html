@@ -1,1 +1,44 @@
-<div ng-if="auth.isLoggedIn()">Dashboard</div>
+<div class="dashboard" ng-controller="DashboardController">
+    <h1>Dashboard</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <td class="hoverable" ng-click="order('Title')">
+                Issue
+                <span class="sortorder" ng-show="predicate === 'Title'" ng-class="{reverse:reverse}"></span>
+            </td>
+            <td class="hoverable" ng-click="order('Project.Name')">
+                Project
+                <span class="sortorder" ng-show="predicate === 'Project.Name'" ng-class="{reverse:reverse}"></span>
+            </td>
+            <td class="hoverable" ng-click="order('DueDate')">
+                Due Date
+                <span class="sortorder" ng-show="predicate === 'DueDate'" ng-class="{reverse:reverse}"></span>
+            </td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="issue in issues | orderBy:predicate:reverse">
+            <td class="hoverable" ng-click="viewIssue(issue.Id)">{{issue.Title}}</td>
+            <td class="hoverable" ng-click="viewProject(issue.Project.Id)">{{issue.Project.Name}}</td>
+            <td>{{issue.DueDate | date:'dd-MM-yyyy'}}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div ng-if="allIssues == 0">No Issues</div>
+
+    <pagination ng-if="allIssues > issuesParams.pageSize"
+                total-items="allIssues" ng-model="issuesParams.startPage"
+                items-per-page="issuesParams.pageSize" ng-change="getIssues()"
+                max-size="9" boundary-links="true"
+                class="aligner">
+    </pagination>
+
+    <div ng-if="auth.isAdmin()">
+        <a class="btn btn-lg btn-info" href="#/projects" >View All Projects</a>
+        <a class="btn btn-lg btn-info" href="#/projects/add">Add New Project</a>
+        <a class="btn btn-lg btn-info" href="#/projects/add-issue">Add New Issue</a>
+    </div>
+
+</div>

@@ -13,9 +13,8 @@
     <script src="app/bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
-    <div ng-include src="'app/templates/header.html'" class="navbar navbar-default navbar-fixed-top" ng-controller="HomeController"></div>
+    <div ng-include src="'templates/partial/header.html'" class="navbar navbar-default navbar-fixed-top" ng-controller="HomeController"></div>
     <div class="container">
-        <div ng-controller="HomeController" ng-if="auth.isAnonymous()">Hello</div>
         <div ng-view></div>
     </div>
 
@@ -25,6 +24,7 @@
     <script src="app/bower_components/angular/angular.js"></script>
     <script src="app/bower_components/angular-route/angular-route.js"></script>
     <script src="app/bower_components/angular-validation-match/dist/angular-validation-match.min.js"></script>
+    <script src="app/bower_components/angular-ui-bootstrap-pagination/pagination.js"></script>
 
     <script src="app/app.js"></script>
 
@@ -33,8 +33,11 @@
     <script src="app/register/register-controller.js"></script>
     <script src="app/profile/profile-controller.js"></script>
     <script src="app/dashboard/dashboard-controller.js"></script>
+    <script src="app/issue-details/issue-details-controller.js"></script>
     <script src="app/app-services/authentication.js"></script>
     <script src="app/app-services/notifyService.js"></script>
     <script src="app/app-services/issueService.js"></script>
+
+    <script src="app/app-directives/issue-statues-directive.js"></script>
 </body>
 </html>

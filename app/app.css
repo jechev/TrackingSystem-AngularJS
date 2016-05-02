@@ -24,3 +24,11 @@ input.ng-invalid-match{
 #password-not-match-text{
   color: red;
 }
+.hoverable {
+  cursor: pointer;
+}
+
+.hoverable:hover {
+  color: #40e0d0;
+  text-decoration: underline;
+}
