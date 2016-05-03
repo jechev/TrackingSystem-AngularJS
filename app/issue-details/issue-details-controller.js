@@ -26,20 +26,33 @@ angular.module('trackingSystem.issue-details',[])
                             if(currentUserName ===assigneeUsername){
                                 $scope.isAssignee=true;
                             }
-                            if(currentUserName==leaderUsername){
+                            if(currentUserName===leaderUsername){
                                 $scope.isLeader=true;
                             }
                             $scope.issueDetails=issueData;
                             $scope.labels=issueData.Labels;
-                            console.log(issueData.Labels);
-                            console.log(issueData);
-                            console.log($scope.labels);
                         },
                         function error(err){
                             notifyService.notifyErrorMsg("Failed loading data...", err);
                         }
                     )
                 }
+            };
+            $scope.changeStatus = function(statusId) {
+                issueService.changeIssueStatus($routeParams.id,statusId).then(
+                    function success(data) {
+                        issueService.getIssueById($routeParams.id).then(
+                            function success(issueData){
+                                $scope.issueDetails.Status=issueData.Status;
+                            },
+                            function error(err){
+                                notifyService.notifyErrorMsg(err.Message, err)
+                            }
+                        )
+                    }, function error(err) {
+                        notifyService.notifyErrorMsg(err.Message, err);
+                    }
+                );
             };
             $scope.getIssueDetails();
         }]);

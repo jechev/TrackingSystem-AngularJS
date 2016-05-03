@@ -30,8 +30,21 @@ angular.module('trackingSystem.app-services.issueService',[])
                 return deferred.promise;
             }
 
+            function changeIssueStatus(issueId,statusId){
+                var deferred=$q.defer();
+                $http.put(BASE_URL + 'issues/'+issueId +'/changestatus?statusId='+statusId,"",{headers:authentication.getAuthHeaders()})
+                    .success(function(issueData){
+                        deferred.resolve(issueData);
+                    })
+                    .error(function(err){
+                        deferred.reject(err);
+                    });
+                return deferred.promise;
+            }
+
             return {
                 getUserIssues:getUserIssues,
-                getIssueById:getIssueById
+                getIssueById:getIssueById,
+                changeIssueStatus:changeIssueStatus
             }
         }]);
