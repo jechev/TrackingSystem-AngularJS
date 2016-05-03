@@ -14,7 +14,7 @@ angular.module('trackingSystem.issue-details',[])
         function($scope, $location, authentication,issueService,notifyService,$routeParams) {
             var currentUserData=JSON.parse(sessionStorage['currentUser']);
             var currentUserName=currentUserData.Username;
-
+            $scope.auth=authentication;
             $scope.isAssignee=false;
             $scope.isLeader=false;
             $scope.getIssueDetails=function(){
@@ -55,4 +55,7 @@ angular.module('trackingSystem.issue-details',[])
                 );
             };
             $scope.getIssueDetails();
+            $scope.viewProject = function (id) {
+                $location.path('/projects/' + id);
+            };
         }]);

@@ -34,7 +34,7 @@ angular.module('trackingSystem.dashboard',[])
             $scope.getIssues();
 
             $scope.viewProject = function (id) {
-                $location.path('/project/' + id);
+                $location.path('/projects/' + id);
             };
 
             $scope.viewIssue = function (id) {

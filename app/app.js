@@ -9,12 +9,15 @@ angular.module('trackingSystem', [
   'trackingSystem.app-services.authentication',
   'trackingSystem.app-services.notifyService',
   'trackingSystem.app-services.issueService',
+  'trackingSystem.app-services.projectService',
   'trackingSystem.login',
   'trackingSystem.register',
   'trackingSystem.profile',
   'trackingSystem.dashboard',
   'trackingSystem.issue-details',
-  'trackingSystem.app-directives.issues-statues'
+  'trackingSystem.project-details',
+  'trackingSystem.app-directives.issues-statues',
+  'trackingSystem.app-directives.issues-view'
 ])
     .config(['$routeProvider', function($routeProvider) {
       $routeProvider.otherwise({redirectTo: '/'});
