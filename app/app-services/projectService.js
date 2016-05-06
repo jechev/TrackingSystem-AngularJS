@@ -53,11 +53,23 @@ angular.module('trackingSystem.app-services.projectService',[])
                 });
                 return deferred.promise;
             }
+            
+            function getAllProjectsByLeadId(leadId,params) {
+                var deferred=$q.defer();
+                $http.get(BASE_URL + 'projects?filter=Lead.Id="'+leadId+'"&pageSize='+params.pageSize+'&pageNumber='+params.startPage,{headers:authentication.getAuthHeaders()})
+                    .success(function (data) {
+                        deferred.resolve(data);
+                    }).error(function (err) {
+                        deferred.reject(err);
+                });
+                return deferred.promise;
+            }
 
             return {
                 getProjectById:getProjectById,
                 getProjectIssues:getProjectIssues,
                 editProject:editProject,
-                getAllProjects:getAllProjects
+                getAllProjects:getAllProjects,
+                getAllProjectsByLeadId:getAllProjectsByLeadId
             }
         }]);

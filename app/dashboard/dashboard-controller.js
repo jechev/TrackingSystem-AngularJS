@@ -5,7 +5,8 @@ angular.module('trackingSystem.dashboard',[])
         'issueService',
         'notifyService',
         'PAGE_SIZE',
-        function($scope, $location, authentication,issueService,notifyService,PAGE_SIZE) {
+        'projectService',
+        function($scope, $location, authentication,issueService,notifyService,PAGE_SIZE,projectService) {
             $scope.auth=authentication;
             $scope.issuesParams = {
                 'startPage': 1,
@@ -16,6 +17,17 @@ angular.module('trackingSystem.dashboard',[])
             $scope.order = function (predicate) {
                 $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
                 $scope.predicate = predicate;
+            };
+            
+            $scope.projectParams = {
+                'startPage': 1,
+                'pageSize': PAGE_SIZE
+            };
+            $scope.predicateProjects = 'Name';
+            $scope.reverseProjects = true;
+            $scope.orderProjects = function (predicate) {
+                $scope.reverseProjects = ($scope.predicateProjects === predicate) ? !$scope.reverseProjects : false;
+                $scope.predicateProjects = predicate;
             };
 
             $scope.getIssues = function () {
@@ -31,8 +43,22 @@ angular.module('trackingSystem.dashboard',[])
                     );
                 }
             };
-            $scope.getIssues();
+            $scope.getOwnProjects=function () {
+                var userInfo=authentication.getCurrentUser();
+                var userId=userInfo.Id;
+                if(userId){ projectService.getAllProjectsByLeadId(userId,$scope.projectParams).then(
+                    function success(data) {
+                        $scope.ownProjects=data.Projects;
+                        $scope.allProjects=data.TotalPages * $scope.projectParams.pageSize;
+                    },
+                    function error(err){
+                        notifyService.notifyErrorMsg("Failed loading data...", err);
+                    }
+                )}
+            };
 
+            $scope.getOwnProjects();
+            $scope.getIssues();
             $scope.viewProject = function (id) {
                 $location.path('/projects/' + id);
             };

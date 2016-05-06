@@ -1,4 +1,4 @@
-<div class="dashboard" ng-controller="DashboardController">
+<div class="dashboard" ng-controller="DashboardController" ng-cloak="">
     <h1>Dashboard</h1>
     <table class="table table-striped">
         <thead>
@@ -31,6 +31,37 @@
     <pagination ng-if="allIssues > issuesParams.pageSize"
                 total-items="allIssues" ng-model="issuesParams.startPage"
                 items-per-page="issuesParams.pageSize" ng-change="getIssues()"
+                max-size="9" boundary-links="true"
+                class="aligner">
+    </pagination>
+
+    <h1>Own Projects</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <td class="hoverable" ng-click="orderProjects('Name')">
+                Name
+                <span class="sortorder" ng-show="predicateProjects === 'Name'" ng-class="{reverseProjects:reverseProjects}"></span>
+            </td>
+            <td class="hoverable" ng-click="orderProjects('ProjectKey')">
+                Project
+                <span class="sortorder" ng-show="predicateProjects === 'ProjectKey'" ng-class="{reverseProjects:reverseProjects}"></span>
+            </td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="project in ownProjects | orderBy:predicateProjects:reverse">
+            <td class="hoverable" ng-click="viewProject(project.Id)">{{project.Name}}</td>
+            <td>{{project.ProjectKey}}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div ng-if="allProjects == 0">No Own Projects</div>
+
+    <pagination ng-if="allProjects > projectParams.pageSize"
+                total-items="allProjects" ng-model="projectParams.startPage"
+                items-per-page="projectParams.pageSize" ng-change="getOwnProjects()"
                 max-size="9" boundary-links="true"
                 class="aligner">
     </pagination>
