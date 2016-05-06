@@ -1,15 +1,15 @@
 'use strict';
-angular.module('trackingSystem.project-details',[])
+angular.module('trackingSystem.project-edit',[])
     .config(['$routeProvider',function($routeProvider){
-        $routeProvider.when('/projects/:id',{
-            templateUrl:'app/project-details/project-details.html',
-            controller:'ProjectDetailsController',
+        $routeProvider.when('/projects/:id/edit',{
+            templateUrl:'app/project-edit/project-edit.html',
+            controller:'ProjectEditController',
             access: {
                 requiresLogin: true
             }
         })
     }])
-    .controller('ProjectDetailsController',['$scope',
+    .controller('ProjectEditController',['$scope',
         '$location',
         'authentication',
         'projectService',
@@ -39,32 +39,18 @@ angular.module('trackingSystem.project-details',[])
                     )
                 }
             };
-
-            $scope.predicate = 'DueDate';
-            $scope.reverse = true;
-            $scope.order = function (predicate) {
-                $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
-                $scope.predicate = predicate;
-            };
-
-            $scope.getProjectIssues=function(){
-                if(authentication.isLoggedIn()){
-                    projectService.getProjectIssues($routeParams.id).then(
-                        function success(issuesData){
-                            $scope.issues=issuesData;
+            $scope.editProject=function (id,data) {
+                if($scope.isLeader){
+                    projectService.editProject($routeParams.id,data).then(
+                        function (success) {
+                            notifyService.notifySuccessMsg("Login successful");
+                            $location.path("/projects/"+$routeParams.id);
                         },
-                        function error(err){
-                            notifyService.notifyErrorMsg("Failed loading data...", err);
+                        function (error) {
+                            notifyService.notifyErrorMsg("Edit project failed!",error);
                         }
                     )
                 }
             };
             $scope.getProjectDetails();
-            $scope.getProjectIssues();
-            $scope.viewIssue = function(id) {
-                $location.path("issues/" + id);
-            };
-            $scope.editProject=function (id) {
-                $location.path('projects/'+id+'/edit');
-            }
         }]);

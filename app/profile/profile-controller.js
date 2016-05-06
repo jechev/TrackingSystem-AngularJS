@@ -2,7 +2,10 @@ angular.module('trackingSystem.profile',[])
     .config(['$routeProvider',function($routeProvider){
         $routeProvider.when('/profile/password',{
             templateUrl:'app/profile/change-password.html',
-            controller:'ProfileController'
+            controller:'ProfileController',
+            access: {
+                requiresLogin: true
+            }
         })
     }])
     .controller('ProfileController',['$scope',

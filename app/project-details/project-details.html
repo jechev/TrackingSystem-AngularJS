@@ -3,7 +3,7 @@
         <strong>Details for project </strong>"{{projectDetails.Name}}"
     </h2>
     <div ng-if="isLeader || auth.isAdmin()">
-        <button class="btn btn-sm btn-success inline">Edit</button>
+        <button class="btn btn-sm btn-success inline" ng-click="editProject(projectDetails.Id)">Edit</button>
         <button class="btn btn-sm btn-success inline">Add issue</button>
     </div>
     </br>

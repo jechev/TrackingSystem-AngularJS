@@ -2,7 +2,10 @@ angular.module('trackingSystem.issue-details',[])
     .config(['$routeProvider',function($routeProvider){
         $routeProvider.when('/issues/:id',{
             templateUrl:'app/issue-details/issue-details.html',
-            controller:'IssueDetailsController'
+            controller:'IssueDetailsController',
+            access: {
+                requiresLogin: true
+            }
         })
     }])
     .controller('IssueDetailsController',['$scope',

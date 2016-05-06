@@ -1,0 +1,19 @@
+<h2>Edit Project</h2>
+<form name="editProjectForm" class="form-horizontal">
+    <label for="project-name">Project Name:</label>
+    <input type="text" ng-model="projectDetails.Name" id="project-name" class="form-control">
+    <label for="project-description">Description:</label>
+    <textarea  ng-model="projectDetails.Description" id="project-description" class="form-control"></textarea>
+    <div  ng-if="labels.length>0">
+        <h4>Labels</h4>
+        <div class="alert alert-dismissible alert-info">
+            <ul class="list-inline">
+                <li ng-repeat="label in labels">
+                    <span class="label label-default">{{label.Name}}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <label for="project-labels">Labels :</label>
+    <input type="text" ng-model="projectDetails.Labels.Name" required ng-list id="project-labels" class="form-control" class="form-control">
+</form>

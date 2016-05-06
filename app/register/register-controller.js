@@ -2,7 +2,10 @@ angular.module('trackingSystem.register',[])
     .config(['$routeProvider',function($routeProvider){
         $routeProvider.when('/register',{
             templateUrl:'app/register/register.html',
-            controller:'RegisterController'
+            controller:'RegisterController',
+            access: {
+                requiresAnonymous: true
+            }
         })
     }])
     .controller('RegisterController',['$scope',
