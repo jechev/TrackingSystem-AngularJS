@@ -28,8 +28,6 @@ angular.module('trackingSystem.project-details',[])
                             $scope.projectDetails=projectData;
                             $scope.labels=projectData.Labels;
                             $scope.priorities=projectData.Priorities;
-                            console.log($scope.isLeader);
-                            console.log(authentication.isAdmin());
                         },
                         function error(err){
                             notifyService.notifyErrorMsg("Failed loading data...", err);
@@ -50,7 +48,6 @@ angular.module('trackingSystem.project-details',[])
                     projectService.getProjectIssues($routeParams.id).then(
                         function success(issuesData){
                             $scope.issues=issuesData;
-                            console.log($scope.issues);
                         },
                         function error(err){
                             notifyService.notifyErrorMsg("Failed loading data...", err);
