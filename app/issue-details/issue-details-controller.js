@@ -14,7 +14,8 @@ angular.module('trackingSystem.issue-details',[])
         'issueService',
         'notifyService',
         '$routeParams',
-        function($scope, $location, authentication,issueService,notifyService,$routeParams) {
+        'commentService',
+        function($scope, $location, authentication,issueService,notifyService,$routeParams,commentService) {
             var currentUserData=JSON.parse(sessionStorage['currentUser']);
             var currentUserName=currentUserData.Username;
             $scope.auth=authentication;
@@ -57,7 +58,20 @@ angular.module('trackingSystem.issue-details',[])
                     }
                 );
             };
+            $scope.getComments=function(){
+                commentService.getCommentsForIssueById($routeParams.id).then(
+                    function success(commentsData){
+                        $scope.comments=commentsData;
+                        console.log($scope.comments);
+                    },
+                    function error(err){
+                        notifyService.notifyErrorMsg(err.Message, err);
+                    }
+                )
+            };
+
             $scope.getIssueDetails();
+            $scope.getComments();
             $scope.viewProject = function (id) {
                 $location.path('/projects/' + id);
             };

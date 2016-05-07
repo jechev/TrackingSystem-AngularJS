@@ -10,6 +10,7 @@ angular.module('trackingSystem', [
     'trackingSystem.app-services.notifyService',
     'trackingSystem.app-services.issueService',
     'trackingSystem.app-services.projectService',
+    'trackingSystem.app-services.commentService',
     'trackingSystem.login',
     'trackingSystem.register',
     'trackingSystem.profile',

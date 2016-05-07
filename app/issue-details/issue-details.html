@@ -39,5 +39,12 @@
             </ul>
         </div>
     </div>
-    <div ng-if="labels.length===0">No Labels</div>
+    <div ng-if="labels.length===0"><strong>No Labels</strong></div>
+    <div ng-if="comments.length>0">
+        <blockquote ng-repeat="comment in comments">
+            <p>{{comment.Text}}</p>
+            <small>{{comment.CreatedOn | date:'dd-MM-yyyy'}} <cite title="Source Title">{{comment.Author.Username}}</cite></small>
+        </blockquote>
+    </div>
+    <div ng-if="comments.length===0"><strong>No Comments</strong></div>
 </div>
