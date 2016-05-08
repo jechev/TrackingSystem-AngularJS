@@ -11,7 +11,6 @@ angular.module('trackingSystem.home',[])
         'notifyService',
         function($scope, $location, authentication,notifyService) {
             $scope.auth=authentication;
-            $scope.username=sessionStorage['currentUserName'];
             $scope.logout=function(){
                 authentication.logout().then(
                     function(success){

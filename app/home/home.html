@@ -1,6 +1,14 @@
 <div>
 <div class="margin-bottom-100"></div>
-<div class="text-center" ng-if="auth.isAnonymous()" >Welcome</div>
+<div class="text-center jumbotron" ng-if="auth.isAnonymous()" id="home-page">
+        <h1>Issue tracking system</h1>
+        <p> Issue tracking systems are commonly used in an organization's customer support call center to create, update, and resolve reported customer issues, or even issues reported by that organization's other employees.</p>
+        <p>
+            <a class="btn btn-primary btn-lg" href="#/login">Login</a>
+            <a class="btn btn-primary btn-lg" href="#/register">Register</a>
+        </p>
+
+</div>
 <div class="text-center" ng-if="auth.isLoggedIn()" ng-include src="'app/dashboard/dashboard.html'"></div>
 
 </div>
