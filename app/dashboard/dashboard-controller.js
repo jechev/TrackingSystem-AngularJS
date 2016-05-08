@@ -1,3 +1,4 @@
+'use strict';
 angular.module('trackingSystem.dashboard',[])
     .controller('DashboardController',['$scope',
         '$location',

@@ -1,3 +1,4 @@
+'use strict';
 angular.module('trackingSystem.app-services.issueService',[])
     .factory('issueService',[
         '$http',

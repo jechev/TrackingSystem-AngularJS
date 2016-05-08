@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('trackingSystem.profile',[])
     .config(['$routeProvider',function($routeProvider){
         $routeProvider.when('/profile/password',{

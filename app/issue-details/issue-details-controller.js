@@ -1,3 +1,4 @@
+'use strict';
 angular.module('trackingSystem.issue-details',[])
     .config(['$routeProvider',function($routeProvider){
         $routeProvider.when('/issues/:id',{

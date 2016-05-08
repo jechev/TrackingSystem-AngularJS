@@ -1,3 +1,4 @@
+'use strict';
 angular.module('trackingSystem.login',[])
     .config(['$routeProvider',function($routeProvider){
         $routeProvider.when('/login',{

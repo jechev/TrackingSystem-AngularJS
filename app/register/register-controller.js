@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('trackingSystem.register',[])
     .config(['$routeProvider',function($routeProvider){
         $routeProvider.when('/register',{

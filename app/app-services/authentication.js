@@ -1,3 +1,4 @@
+'use strict';
 angular.module('trackingSystem.app-services.authentication', [])
     .factory('authentication', [
         '$http',

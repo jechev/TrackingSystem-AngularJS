@@ -1,3 +1,4 @@
+'use strict';
 angular.module('trackingSystem.app-services.notifyService', [])
     .factory('notifyService', [
         function () {
