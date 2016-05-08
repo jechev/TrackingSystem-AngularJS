@@ -58,11 +58,22 @@ angular.module('trackingSystem.issue-details',[])
                     }
                 );
             };
+
             $scope.getComments=function(){
                 commentService.getCommentsForIssueById($routeParams.id).then(
                     function success(commentsData){
                         $scope.comments=commentsData;
-                        console.log($scope.comments);
+                    },
+                    function error(err){
+                        notifyService.notifyErrorMsg(err.Message, err);
+                    }
+                )
+            };
+
+            $scope.addComment=function(text){
+                commentService.addCommentForIssueById($routeParams.id,text).then(
+                    function success(newComment){
+                        $scope.getComments();
                     },
                     function error(err){
                         notifyService.notifyErrorMsg(err.Message, err);

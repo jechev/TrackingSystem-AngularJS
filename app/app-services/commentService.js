@@ -18,7 +18,21 @@ angular.module('trackingSystem.app-services.commentService',[])
                     });
                 return  deferred.promise;
             }
+
+            function addCommentForIssueById(id,data){
+                var deferred=$q.defer();
+                $http.post(BASE_URL + 'issues/'+id+'/comments',data,{headers:authentication.getAuthHeaders()})
+                    .success(function(data){
+                        deferred.resolve(data);
+                    })
+                    .error(function(err){
+                        deferred.reject(err);
+                    });
+                return  deferred.promise;
+            }
+            
             return {
-                getCommentsForIssueById:getCommentsForIssueById
+                getCommentsForIssueById:getCommentsForIssueById,
+                addCommentForIssueById:addCommentForIssueById
             }
         }]);
