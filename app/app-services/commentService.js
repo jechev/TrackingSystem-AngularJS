@@ -30,7 +30,7 @@ angular.module('trackingSystem.app-services.commentService',[])
                     });
                 return  deferred.promise;
             }
-            
+
             return {
                 getCommentsForIssueById:getCommentsForIssueById,
                 addCommentForIssueById:addCommentForIssueById

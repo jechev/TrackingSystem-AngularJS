@@ -41,6 +41,7 @@
     </div>
     <div ng-if="labels.length===0"><strong>No Labels</strong></div>
     <div ng-if="comments.length>0">
+        <h3>Comments</h3>
         <blockquote ng-repeat="comment in comments">
             <p>{{comment.Text}}</p>
             <small>{{comment.CreatedOn | date:'dd-MM-yyyy'}} <cite title="Source Title">{{comment.Author.Username}}</cite></small>
@@ -49,7 +50,7 @@
     <div ng-if="comments.length===0"><strong>No Comments</strong></div>
     <div ng-if="isAssignee || isLeader">
         <form name="commentForm">
-            <textarea ng-model="comment.Text" ng-required></textarea>
+            <textarea ng-model="comment.Text" required="required" class="form-control" rows="3"></textarea>
             </br>
             <button class="btn btn-primary" ng-disabled="commentForm.$invalid" ng-click="addComment(comment)">Add Comment</button>
         </form>
