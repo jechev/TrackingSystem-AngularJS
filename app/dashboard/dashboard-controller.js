@@ -12,8 +12,6 @@ angular.module('trackingSystem.dashboard',[])
                 'startPage': 1,
                 'pageSize': PAGE_SIZE
             };
-            var userInfo=authentication.getCurrentUser();
-            var userId=userInfo.Id;
             $scope.predicate = 'DueDate';
             $scope.reverse = true;
             $scope.order = function (predicate) {
@@ -46,7 +44,7 @@ angular.module('trackingSystem.dashboard',[])
                 }
             };
             $scope.getOwnProjects=function () {
-                if(userId){ projectService.getAllProjectsByLeadId(userId,$scope.projectParams).then(
+                if($scope.userId){ projectService.getAllProjectsByLeadId($scope.userId,$scope.projectParams).then(
                     function success(data) {
                         $scope.ownProjects=data.Projects;
                         $scope.allProjects=data.TotalPages * $scope.projectParams.pageSize;
@@ -56,6 +54,20 @@ angular.module('trackingSystem.dashboard',[])
                     }
                 )}
             };
+
+            $scope.getAllInfo=function(){
+                authentication.getCurrentUserInfo().then(
+                    function success(data){
+                        $scope.userId=data.Id;
+                        $scope.getOwnProjects();
+                        $scope.getIssues();
+                    },
+                    function err(err){
+                        notifyService.notifyErrorMsg("Failed loading data...", err);
+                    }
+                )
+            };
+            $scope.getAllInfo();
             $scope.viewProject = function (id) {
                 $location.path('/projects/' + id);
             };
